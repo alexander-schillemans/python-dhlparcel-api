@@ -1,0 +1,11 @@
+dist/tests/
+tests/
+dist/__pycache__/
+__pycache__/
+Pipfile
+Pipfile.lock
+dist/
+dhlparcel_api.egg-info
+__pycache__/
+dhlparcel/cache/*
+!dhlparcel/cache/__init__.py
