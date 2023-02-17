@@ -34,10 +34,11 @@ class AuthHandler:
         if auth_tokens:
             self._set_auth_tokens(auth_tokens)
             
-            if self._is_token_expired('access') and not self._is_token_expired('refresh'):
-                self._get_auth_tokens_from_refresh_token()
-            else:
-                self._get_auth_tokens()
+            if self._is_token_expired('access'):
+                if not self._is_token_expired('refresh'):
+                    self._get_auth_tokens_from_refresh_token()
+                else:
+                    self._get_auth_tokens()
         else:
             auth_tokens = self._get_auth_tokens()
         
