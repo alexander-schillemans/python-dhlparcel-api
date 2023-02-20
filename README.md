@@ -11,7 +11,7 @@ This package is published on PyPi: https://pypi.org/project/python-dhlparcel-api
 
 Install with pip
 
-```
+```python
 pip install python-dhlparcel-api
 ```
 
@@ -25,7 +25,7 @@ from dhlparcel.api import DHLParcel_API
 You will need your user ID, user key and account number to create a connection.
 Find out how you can obtain these here: https://dhlparcel.github.io/api-gtw-docs/#12-services
 
-```
+```python
 api = DHLParcel_API(user_id, user_key, account_number)
 ```
 
@@ -39,7 +39,7 @@ You can retrieve data by using the ```.get(id)``` or ```.list()``` functions on 
 
 You can consult the API documentation to know what returned fields to expect.
 
-```
+```python
 from dhlparcel.api import DHLParcel_API
 api = DHLParcel_API(user_id, user_key, account_number)
 parcelshops = api.parcelshops.list('BE', zipCode='2000')
@@ -54,7 +54,7 @@ These endpoints have the ```.create()``` functions available.
 
 Consider the following request needed to create a shipment:
 
-```
+```json
 {
   "shipmentId": "15916857-2a31-4238-a45b-e7ba32e0e320",
   "orderReference": "myReference",
@@ -128,7 +128,7 @@ The top-level attributes: ```shipmentId```, ```orderReference```, ```receiver```
 
 We can then create above shipment request as follows:
 
-```
+```python
 new_shipment = api.shipments.create(
   shipmentId = "15916857-2a31-4238-a45b-e7ba32e0e320",
   orderReference = "myReference",
@@ -205,7 +205,7 @@ The response will be put in the ```new_shipment``` object.
 
 Basic error handling has been added. You can check if an error has occured during a call by checking the ```has_error``` attribute on an object. If the ```has_error``` has been set to ```True```, an ```Error``` object will be attached to the ```error``` attribute of the same object. The ```Error``` object contains two attributes: ```returned_content``` and ```status```. ```returned_content``` can be empty as not all errors return something.
 
-```
+```python
 shipment = api.shipments.get(id)
 
 if shipment.has_error:
@@ -232,7 +232,7 @@ Following functions are available:
 
 Use them as follows:
 
-```
+```python
 api.endpoint.function()
 
 # example:
