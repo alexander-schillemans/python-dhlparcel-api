@@ -7,7 +7,7 @@ class BaseModel:
         self.has_error = False
         self.error = None
     
-    def construct_from_response(self, resp_data: dict):
+    def construct_from_response(self, resp_data: dict) -> 'BaseModel':
         """ Construct an object from the returned response data. """
         
         for key, value in resp_data.items():
