@@ -4,6 +4,8 @@ Basic wrapper for the DHL Parcel API (v1).
 ## Disclaimer
 This wrapper does **not** include all API endpoints. I will extend this package as I go and as I need.
 
+This package is in **active development** and is the reason why there is no stable version available.
+
 ## Getting started
 
 ### Install
@@ -17,7 +19,7 @@ pip install python-dhlparcel-api
 
 ### Import
 Import the package and the DHLParcel_API.
-```
+```python
 from dhlparcel.api import DHLParcel_API
 ```
 
