@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
   name = 'python-dhlparcel-api',         
   packages=['dhlparcel', 'dhlparcel.models', 'dhlparcel.cache', 'dhlparcel.endpoints'],
-  version = '0.0.1',
+  version = '0.0.2',
   license='GPL-3.0-or-later',
   description = 'Wrapper for the DHL Parcel API endpoints',
   long_description=long_description,
@@ -17,7 +17,7 @@ setup(
   author = 'Alexander Schillemans',
   author_email = 'alexander.schillemans@hotmail.com',
   url = 'https://github.com/alexander-schillemans/python-dhlparcel-api',
-  download_url = 'https://github.com/alexander-schillemans/python-dhlparcel-api/archive/refs/tags/0.0.1.tar.gz',
+  download_url = 'https://github.com/alexander-schillemans/python-dhlparcel-api/archive/refs/tags/0.0.2.tar.gz',
   keywords = ['dhl', 'dhl parcel'],
   install_requires=[
           'requests'
