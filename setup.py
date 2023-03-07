@@ -17,7 +17,7 @@ setup(
   author = 'Alexander Schillemans',
   author_email = 'alexander.schillemans@hotmail.com',
   url = 'https://github.com/alexander-schillemans/python-dhlparcel-api',
-  download_url = 'https://github.com/alexander-schillemans/python-dhlparcel-api/archive/refs/tags/v0.0.1.tar.gz',
+  download_url = 'https://github.com/alexander-schillemans/python-dhlparcel-api/archive/refs/tags/0.0.1.tar.gz',
   keywords = ['dhl', 'dhl parcel'],
   install_requires=[
           'requests'
