@@ -1,6 +1,6 @@
 from typing_extensions import Literal
 from typing import Optional
-from http import HTTPStatus
+
 
 from .base import APIEndpoint
 from dhlparcel.models.base import ObjectListModel
@@ -54,7 +54,7 @@ class CapabilityMethods(APIEndpoint):
         if quantity: data['quantity'] = quantity
         
         status, headers, resp_json = self.api.get(url, data)
-        if status != HTTPStatus.OK: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
+        if status > 399: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
         
         return ObjectListModel().construct_from_response(resp_json)
     

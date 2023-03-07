@@ -1,7 +1,7 @@
 from typing import Optional, Union
 from typing_extensions import Literal
 
-from http import HTTPStatus
+
 
 from .base import APIEndpoint
 from dhlparcel.models.base import ObjectListModel, BaseModel
@@ -21,7 +21,7 @@ class LabelMethods(APIEndpoint):
         
         url = f'{self.endpoint}/{id}'
         status, headers, resp = self.api.get(url, headers=headers)
-        if status != HTTPStatus.OK: return BaseModel().set_error(returned_content=str(resp), status=status)
+        if status > 399: return BaseModel().set_error(returned_content=str(resp), status=status)
         
         if data_format == 'pdf':
             return resp
@@ -40,7 +40,7 @@ class LabelMethods(APIEndpoint):
             raise ValueError('You must use at least one of the following filters: "trackerCodeFilter", "orderReferenceFilter", "shipmentId". ')
         
         status, headers, resp_json = self.api.get(self.endpoint)
-        if status != HTTPStatus.OK: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
+        if status > 399: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
         
         return ObjectListModel().construct_from_response(resp_json)
     

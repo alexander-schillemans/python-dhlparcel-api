@@ -1,6 +1,6 @@
 from typing import Optional
 from typing_extensions import Literal
-from http import HTTPStatus
+
 
 from .base import APIEndpoint
 from dhlparcel.models.base import ObjectListModel
@@ -28,6 +28,6 @@ class ProductMethods(APIEndpoint):
         if carrier: data['carrier'] = carrier
         
         status, headers, resp_json = self.api.get(self.endpoint, data)
-        if status != HTTPStatus.OK: return ObjectListModel().set_error(returned_content=resp_json, status=status)
+        if status > 399: return ObjectListModel().set_error(returned_content=resp_json, status=status)
         
         return ObjectListModel().construct_from_response(resp_json)

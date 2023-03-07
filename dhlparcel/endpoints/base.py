@@ -1,6 +1,6 @@
 from dhlparcel.models.base import BaseModel
 
-from http import HTTPStatus
+
 
 class APIEndpoint:
 
@@ -15,7 +15,7 @@ class APIEndpoint:
         
         url = f'{self.endpoint}/{id}'
         status, headers, resp_json = self.api.get(url)
-        if status != HTTPStatus.OK: return BaseModel().set_error(returned_content=str(resp_json), status=status)
+        if status > 399: return BaseModel().set_error(returned_content=str(resp_json), status=status)
         
         return BaseModel().construct_from_response(resp_json)
     

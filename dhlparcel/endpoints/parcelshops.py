@@ -1,6 +1,6 @@
 from typing import Optional, List
 from typing_extensions import Literal
-from http import HTTPStatus
+
 
 from .base import APIEndpoint
 from dhlparcel.models.base import ObjectListModel, BaseModel
@@ -20,7 +20,7 @@ class ParcelShopMethods(APIEndpoint):
         url = f'{self.endpoint}/{countryCode}/{id}'
         
         status, headers, resp_json = self.api.get(url)
-        if status != HTTPStatus.OK: return BaseModel().set_error(returned_content=resp_json, status=status)
+        if status > 399: return BaseModel().set_error(returned_content=resp_json, status=status)
         
         return BaseModel().construct_from_response(resp_json)
         
@@ -70,6 +70,6 @@ class ParcelShopMethods(APIEndpoint):
         if collectionTime: data['collectionTime'] = collectionTime
         
         status, headers, resp_json = self.api.get(url, data)
-        if status != HTTPStatus.OK: return ObjectListModel().set_error(returned_content=resp_json, status=status)
+        if status > 399: return ObjectListModel().set_error(returned_content=resp_json, status=status)
         
         return ObjectListModel().construct_from_response(resp_json)

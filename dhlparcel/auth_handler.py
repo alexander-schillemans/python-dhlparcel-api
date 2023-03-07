@@ -1,7 +1,7 @@
 from typing import Type
 from typing_extensions import Literal
-
 from http import HTTPStatus
+
 import datetime
 import json
 
@@ -53,7 +53,7 @@ class AuthHandler:
         
         if status == HTTPStatus.UNAUTHORIZED: raise ValueError('The request received a status 401 UNAUTHORIZED. Do you have the correct user_id and key set?')
         if not resp_content: raise ValueError('The request did not return valid JSON.')
-        if status != HTTPStatus.OK: raise ValueError('An error occured during authentication: ' + json.dumps(resp_content))
+        if status > 399: raise ValueError('An error occured during authentication: ' + json.dumps(resp_content))
         self._set_auth_tokens(resp_content)
         
         return resp_content
@@ -70,7 +70,7 @@ class AuthHandler:
         
         if status == HTTPStatus.UNAUTHORIZED: raise ValueError('The request received a status 401 UNAUTHORIZED. Do you have the correct user_id and key set?')
         if not resp_content: raise ValueError('The request did not return valid JSON.')
-        if status != HTTPStatus.OK: raise ValueError('An error occured during authentication: ' + json.dumps(resp_content))
+        if status > 399: raise ValueError('An error occured during authentication: ' + json.dumps(resp_content))
         self._set_auth_tokens(resp_content)
         
         return resp_content

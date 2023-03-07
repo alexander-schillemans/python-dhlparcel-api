@@ -1,7 +1,7 @@
 from typing import Optional, List
 from typing_extensions import Literal
 
-from http import HTTPStatus
+
 
 from .base import APIEndpoint
 from dhlparcel.models.base import ObjectListModel, BaseModel
@@ -39,6 +39,6 @@ class ParcelTypeMethods(APIEndpoint):
         if accountNumber: data['toCountry'] = accountNumber
 
         status, headers, resp_json = self.api.get(url)
-        if status != HTTPStatus.OK: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
+        if status > 399: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
         
         return ObjectListModel().construct_from_response(resp_json)

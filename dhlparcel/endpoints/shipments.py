@@ -1,6 +1,6 @@
 from typing import Optional
 from typing_extensions import Literal
-from http import HTTPStatus
+
 
 from .base import APIEndpoint
 from dhlparcel.models.base import BaseModel, ObjectListModel
@@ -33,7 +33,7 @@ class ShipmentMethods(APIEndpoint):
         if toBusiness: data['toBusiness'] = toBusiness
         
         status, headers, resp_json = self.api.get(url, data)
-        if status != HTTPStatus.OK: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
+        if status > 399: return ObjectListModel().set_error(returned_content=str(resp_json), status=status)
 
         return ObjectListModel().construct_from_response(resp_json)
 
@@ -72,6 +72,6 @@ class ShipmentMethods(APIEndpoint):
         if returnLabel: data['returnLabel'] = returnLabel
         
         status, headers, resp_json = self.api.post(self.endpoint, data)
-        if status != HTTPStatus.OK: return BaseModel().set_error(returned_content=str(resp_json), status=status)
+        if status > 399: return BaseModel().set_error(returned_content=str(resp_json), status=status)
         
         return BaseModel().construct_from_response(resp_json)
