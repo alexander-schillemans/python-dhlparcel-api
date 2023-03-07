@@ -4,7 +4,7 @@ Basic wrapper for the DHL Parcel API (v1).
 ## Disclaimer
 This wrapper does **not** include all API endpoints. I will extend this package as I go and as I need.
 
-This package is in **active development** and is the reason why there is no stable version available.
+This package is in **active development** and is the reason why there is no stable version yet.
 
 ## Getting started
 
